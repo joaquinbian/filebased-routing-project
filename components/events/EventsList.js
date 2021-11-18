@@ -2,20 +2,17 @@ import React from "react";
 import EventCard from "./EventCard";
 import styled from "styled-components";
 
+const ListContainer = styled.div`
+  width: 90%;
+  max-width: 40rem;
+  // background: blue;
+  margin: 5rem auto;
+`;
 const EventsList = ({ events }) => {
-  const ListContainer = styled.div`
-    width: 90%;
-    max-width: 40rem;
-    // background: blue;
-    margin: 5rem auto;
-  `;
-
   return (
     <ListContainer>
       {events.map((ev, i) => (
-        <li key={ev.id || i}>
-          <EventCard event={ev} />
-        </li>
+        <EventCard event={ev} key={ev.id || i} />
       ))}
     </ListContainer>
   );
