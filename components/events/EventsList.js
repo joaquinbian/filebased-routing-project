@@ -6,6 +6,7 @@ const EventsList = ({ events }) => {
   const ListContainer = styled.div`
     width: 90%;
     max-width: 40rem;
+    // background: blue;
     margin: 5rem auto;
   `;
 

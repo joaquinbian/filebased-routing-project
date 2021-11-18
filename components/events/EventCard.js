@@ -2,12 +2,17 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import breakpoints from "../../breakpoints";
+import IconDate from "../icons/date-icon";
+import IconArrow from "../icons/arrow-right-icon";
+import IconAddress from "../icons/address-icon";
+import Button from "../ui/Button";
 
 const EventContainer = styled.li`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
   background: white;
+  // background: red;
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -22,7 +27,7 @@ const EventContainer = styled.li`
     flex-direction: row;
     img {
       width: 40%;
-      height: 14rem;
+      height: 16rem;
     }
   }
 `;
@@ -78,6 +83,20 @@ const Actions = styled.div`
   }
 `;
 
+// const IconWrapper = styled.div`
+//   height: 50rem;
+// `;
+const IconWrapper = styled.span`
+  margin-left: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+`;
+
 const EventCard = ({ event }) => {
   const newDate = new Date(event.date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -93,14 +112,26 @@ const EventCard = ({ event }) => {
         <div>
           <h1>{event.title}</h1>
           <Fecha>
+            <IconWrapper>
+              <IconDate />
+            </IconWrapper>
             <time>{newDate}</time>
           </Fecha>
           <Address>
+            <IconWrapper>
+              <IconAddress />
+            </IconWrapper>
             <address>{newLocation}</address>
           </Address>
         </div>
         <Actions>
-          <Link href={`/events/${event.id}`}>explore event</Link>
+          {/* <Link href={`/events/${event.id}`}>explore event</Link> */}
+          <Button link={`/events/${event.id}`}>
+            <span> Explore event</span>
+            <IconWrapper>
+              <IconArrow />
+            </IconWrapper>
+          </Button>
         </Actions>
       </EventContent>
     </EventContainer>
