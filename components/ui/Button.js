@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
-const MyButton = styled.a`
+export const MyButton = styled.a`
   text-decoration: none;
   cursor: pointer;
   font: inherit;
@@ -20,12 +20,20 @@ const MyButton = styled.a`
   }
 `;
 const Button = (props) => {
-  return (
-    <Link href={props.link}>
-      {/* Link por defecto renderiza un Link pero si lo queremos estilizar, lo tenemos que poner nosotros */}
-      <MyButton>{props.children}</MyButton>
-    </Link>
-  );
+  if (props.link) {
+    return (
+      <Link href={props.link}>
+        {/* Link por defecto renderiza un Link pero si lo queremos estilizar, lo tenemos que poner nosotros */}
+        <MyButton>{props.children}</MyButton>
+      </Link>
+    );
+  } else {
+    return (
+      <MyButton as="buton" onClick={props.onClick}>
+        {props.children}
+      </MyButton>
+    );
+  }
 };
 
 export default Button;
