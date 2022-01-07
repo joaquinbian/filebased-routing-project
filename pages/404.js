@@ -3,7 +3,7 @@ import React from "react";
 const Error = () => {
   return (
     <div>
-      <p>fallaste pa</p>
+      <p>error 404</p>
     </div>
   );
 };
